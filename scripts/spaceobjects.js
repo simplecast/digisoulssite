@@ -7,11 +7,10 @@ var SpaceObjects = function(r,d,o){
   this.id = "";
   this.sunang = 90;
   this.moonang = 180;
-  this.objectdistance=window.innerWidth/2.7;
+  this.objectdistance=window.innerWidth/2.4;
   this.orbitspeed=o;
   this.smcolor = 0;
-  this.smspeed=0.003;
-    //0.00003;
+  this.smspeed=0.00003;
   this.ellipsed ;
   this.setangle =function(set){
     this.ang = set;
@@ -41,6 +40,9 @@ var SpaceObjects = function(r,d,o){
   
   this.setsmcolor = function(val){
     this.smcolor = val;
+  }
+  this.move = function(val,tune){
+    this.smspeed = (val)*tune;
   }
   this.movebytime = function(){
     
@@ -82,9 +84,6 @@ var SpaceObjects = function(r,d,o){
     //resetMatrix();
     pop();
    
-  }
-  this.move = function(x,y){
-   this.ellipsed.translate(x,y); 
   }
   this.count=0;
   this.update = function(){
