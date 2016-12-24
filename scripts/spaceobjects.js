@@ -7,10 +7,10 @@ var SpaceObjects = function(r,d,o){
   this.id = "";
   this.sunang = 90;
   this.moonang = 180;
-  this.objectdistance=window.innerWidth/2.4;
+  this.objectdistance=window.innerWidth/4;//2.4;
   this.orbitspeed=o;
   this.smcolor = 0;
-  this.smspeed=0.00003;
+  this.smspeed=0.03//0.00003;
   this.ellipsed ;
   this.setangle =function(set){
     this.ang = set;
@@ -35,6 +35,9 @@ var SpaceObjects = function(r,d,o){
     this.ang = this.ang + this.orbitspeed;
     for(var i of this.object){
       i.orbit();
+    }
+    if(this.ang = 360){
+      this.ang = 0;
     }
   }
   
