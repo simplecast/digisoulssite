@@ -105,17 +105,34 @@ function celestialanimate(){
   for(var i=0; i<= hour();i++){
     /*Checks to see if I is with the hour in the muilti array*/
     if(i == whattime[0][i]){
-
+      /*used to set suntime to its current angle stored in an array*/
       for(var j=0; j <= hour(); j++){
         suntime = checkmin(whattime[1][j]);
+        suntime += .0001;
+        /*checks if the suntime is behind the next angle in time and 
+          incremets the motions ov the sun but the .010 to the angle
+        */
         if(suntime >= checkmin(whattime[1][j+1]) && 
            checkmin(whattime[1][j+1]) !== undefined){
+          console.log("adfafd");
           suntimet += .010;
+          if(suntime === checkmin(whattime[1][j+1]) && 
+           checkmin(whattime[1][j+1]) !== undefined){
+            suntime = checkmin(whattime[1][j]);
+          }
         }
+        /*sets newn to j because j is set to the current hour*/
         newn = j;
+        /*check that hour and base on that hour inverses it for the moontime 
+          angle*/
         if(newn === 0){
           newn = 0;
           moontime = checkmin(whattime[1][newn]);
+          if(moontime === checkmin(whattime[1][j+1]) && 
+           checkmin(whattime[1][j+1]) !== undefined){
+            console.log("adfafd");
+            moontime += .010;
+          }
         }
         if(newn === 12){
           newn = 12;
@@ -132,6 +149,11 @@ function celestialanimate(){
       }
     }
   }
+  /*
+    the for loop iterates to the current suntime angle
+    checks if the current suntime angle is less then the 
+    i iter of suntime and adds the seconds to the current suntime
+  */
   for(var i=0; i <= suntime; i+=suntime){
     if(i >0){
       if(suntime <= i){
@@ -139,6 +161,11 @@ function celestialanimate(){
       }
     }
   }
+  /*
+    the for loop iterates to the current moontime angle
+    checks if the current suntime angle is less then the 
+    i iter of moontime and adds the seconds to the current moontime
+  */
   for(var i=0; i <= moontime; i+=moontime){
     if(i >0){
       if(moontime <= i){
@@ -146,21 +173,22 @@ function celestialanimate(){
       }
     }
   }
+  /*sets the seconds of suntime and moontime angles*/
   if(second() <= 59){
-    suntimet += .000000000001;
-    moontimet += .000000000001;
+    suntimet += .000000001;
+    moontimet += .000000001;
   }
-  
+  /*RUns the current angles */
   celestialobj.item(0).setangle(moontime);
   celestialobj.item(1).setangle(suntime);
 
   pop();
 
 }
-
-function sun(){
-  
-}
+/*This function checks the current min and recives the 
+  current angle of the sun or moon then adds the minutes as 
+  increamts of 5
+*/
 function checkmin(out){
 
   for(var k=0 ;k < minute(); k++){
@@ -193,7 +221,7 @@ function checkmin(out){
   }
   return out;
 }
-
+/*Checks for the screen size still needs work */
 function screenresizing(){
    var w = window.matchMedia("(min-width: 3500px)");
   var m = window.matchMedia("(min-width: 1080px)");

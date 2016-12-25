@@ -1,3 +1,13 @@
+/*
+  Written by: Kishon Diaz
+  Using P5.js
+  This is the Object for the sun moon and its center
+  Based on Daniel Shiffman P5 lesson on Solor System in Processing
+  There are simularities ,but I am not building a solor system only a
+  obscure 2d sun and moon
+  75% of this script is based on his java algorithm I made it work in my own way 
+*/
+
 var SpaceObjects = function(r,d,o){
   this.radis = r;
   this.distence = d;
@@ -20,16 +30,12 @@ var SpaceObjects = function(r,d,o){
     this.orbitspeed = this.smspeed;
     console.log("objects length"+ this.object.length);
     for(var i=0; i <=this.object.length; i++){
-      
+      /*Arraylist Does not exist in javascript had to push then break 
+        and set a new that i pushed to to the first one to set the sun and moon*/
       this.object2.push(new SpaceObjects(90,this.objectdistance,this.orbitspeed));
-      //this.object[i] = this.object2[i];
-      if(i == this.object.length){
-        
-        break;
-      }  
+      if(i == this.object.length){break;}  
     }
     this.object = this.object2;
-    
   }
   this.orbit = function(){
     this.ang = this.ang + this.orbitspeed;
@@ -61,122 +67,16 @@ var SpaceObjects = function(r,d,o){
   }
   
   this.display = function(){
- 
     push();
-//    
     fill(this.smcolor);
     rotate(this.ang); 
     translate(this.distence, 0);
     this.ellipsed = ellipse(0, 0, this.radis*2, this.radis*2);
-    
-    //this.update(); 
-    //console.log(this.ellipsed);
-//    console.log(this.ellipsed.translate(this.distence, 0));
-      
-//    
-    //rect(this.ang,0,200,200);
-   
     for(var i of this.object){
       
       smooth();
-      i.display();
-      text(""+this.id+"");
-    
-      
+      i.display();    
     }
-    //resetMatrix();
-    pop();
-   
-  }
-  this.count=0;
-  this.update = function(){
-    
-    //rotate(this.ang);
-    //translate(this.distence, 0);
-    push();
-    console.log(this.ang);
-    this.ellipsed.translate(3, 0);
-    this.ellipsed.rotate(344);
-    console.log(this.ellipsed);
-    for(var i of this.object){
-      console.log(i.ellipsed);
-      smooth();
-      //i.ellipsed.rotate(this.ang);
-      
-      
-    }
-    this.count++;
     pop();
   }
- 
-}
-
-
-
-
-var g = {count:0,"array":new Array()};
-
-var ArrarCounter = function(){
-  this.count = 0;
-  this.isrunning = false;
-  
-  this.array = new Array();
-}
- var a = new ArrarCounter();
-
-
-function ArrayList(d={"size ":Infinity, "item":"", "[]":[],"looped":false}){
- 
-  this.counter = new ArrarCounter();
-  this.list = this.counter.array;
-  this.outerarry = new Array();
-  this.count = 0;
-  a.count = 0;
-  this.item;
-  this.sizecounter = {"counter":0};
-  
-  this.counter.array.push(d.item);
-  //this.list.push(d.item);
-  //this.list2 = this.list;
-//  if(d !== undefined || d.item !== ""){
-//    
-//    this.list.push(d.item);
-//    for(var i of this.list){
-//      
-//      //this.list[g.count] = d.item;
-//      
-//      a.count++;
-//      break;
-//    }
-//    this.outerarry.push(d.item);
-//    console.log("new length"+ this.list.length);
-//    console.log("new length"+ this.outerarry.length);
-//    for(var i=0; i <= this.list.length; i++){
-//      
-//    }
-//    
-//    if(d["[]"]!== undefined){   
-//      for(var j of d["[]"]){
-//        this.list.push(j);
-//        //this.count++;
-//      }
-//    }
-//    g.count++;
-//    
-//    
-//    if(this.count < this.count+1){
-//      this.count++;
-//    }
-//    //this.count = a.count;
-//    this.counter.counter++;  
-//  }
-//  
-//  this.counter = function(item){
-//    this.item = item;
-//    this.sizecounter.counter++;
-//    return this.item; 
-//  }
-//  //console.log(this.counter(d.item));
-//  console.log(a.count + "soo");
-  return this.outerarry;
 }
