@@ -11,7 +11,9 @@ var moontime;//=0.100;
 var moontimet;//=;
 var newmin=0;
 var whattime = [
-  [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],[1.530,1.730,1.930,2.130,2.530,2.930,3.130,3.330,3.530,4.130,4.330,4.530,4.730,5.130,5.330,5.530,5.730,5.930,6.130,6.330,6.530,6.730,6.930,1.130]]
+  [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],[1.530,1.730,1.930,2.130,2.530,2.930,3.130,3.330,3.530,4.130,4.330,4.530,4.730,5.130,5.330,5.530,5.730,5.930,6.130,6.330,6.530,6.730,6.930,1.130],
+  [23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0],
+  [1.130,6.930,6.730,6.530,6.330,6.130,5.930,5.730,5.530,5.330,5.130,4.730,4.530,4.330,4.130,3.530,3.330,3.130,2.930,2.530,2.130,1.930,1.730,1.530]]
 
 function setup(){
   suntime=1;
@@ -85,7 +87,7 @@ function draw(){
   push();
   translate(0,window.innerHeight/2);
   fill("burlywood");
-  //rect(0,window.innerHeight-body.clientHeight,1000000,1000000);
+  rect(0,window.innerHeight-body.clientHeight,1000000,1000000);
   pop();
   
   //console.log(celestialobj.smspeed);
@@ -106,7 +108,7 @@ function celestialanimate(){
     console.log("her");
   }else{
     
-    /*if(height <= 360){
+    if(height <= 360){
       scsize = 650;
     }else
     if(height <= 412){
@@ -158,7 +160,7 @@ function celestialanimate(){
     if(height <= 3490){
       scsize =-4900;
       console.log("err");
-    }*/
+    }
    
   }
   
@@ -261,6 +263,7 @@ function celestialanimate(){
     //end of night
 
   }
+  var newn=0;
   for(var i=0; i<= hour();i++){
     //console.log(whattime[0][i]);
     if(i == whattime[0][i]){
@@ -268,20 +271,60 @@ function celestialanimate(){
       for(var j=0; j <= hour(); j++){
         suntime = checkmin(whattime[1][j]);
         //console.log(suntime);
+        if(suntime >= checkmin(whattime[1][j+1]) && 
+           checkmin(whattime[1][j+1]) !== undefined){
+          suntimet += .010;
+        }
+        newn = j;
+        if(newn === 0){
+          newn = 0;
+          //console.log(newn);
+          moontime = checkmin(whattime[1][newn]);
+        }
+        if(newn === 12){
+          newn = 12;
+          //console.log(newn);
+          moontime = checkmin(whattime[1][newn]);
+        }
+        if(newn < 12){
+          newn = j + 12;
+          //console.log(newn);
+          moontime = checkmin(whattime[1][newn]);
+        }
+        if(newn > 12){
+          newn = j - 12;
+          //console.log(newn);
+          moontime = checkmin(whattime[1][newn]);
+        }
       }
     }
   }
-  console.log()
-  for(var i=0; i <= hour();i++){
-    //console.log(whattime[0][i]);
-    if(i == whattime[0][i]){
-      console.log("hsei");
-      for(var j=0; j <=hour(); j++){
-        moontime = checkmin(whattime[1][j]);
-        console.log("monn" + moontime);
-      }
-    }
-  }
+//  for(var i=0; i<= hour();i++){
+//    console.log(whattime[2][i]);
+//    if(i == whattime[2][i]){
+//      //console.log("hsei");
+//      for(var j=0; j <= hour(); j++){
+//        moontime = checkmin(whattime[3][j]);
+//        //console.log(suntime);
+//        if(moontime >= checkmin(whattime[3][j+1]) && 
+//           checkmin(whattime[3][j+1]) !== undefined){
+//          moontime += .010;
+//        }
+//        
+//      }
+//    }
+//  }
+  //console.log()
+//  for(var i=0; i <= hour();i++){
+//    //console.log(whattime[0][i]);
+//    if(i == whattime[0][i]){
+//      console.log("hsei");
+//      for(var j=0; j <=hour(); j++){
+//        moontime = checkmin(whattime[1][j]);
+//        console.log("monn" + moontime);
+//      }
+//    }
+//  }
   
   if(hour()<= lasthour){
     
@@ -290,7 +333,27 @@ function celestialanimate(){
       //suntime = suntime +.01;
     }
     
-    console.log("here" + suntime);
+    //console.log("here" + suntime);
+  }
+  for(var i=0; i <= suntime; i+=suntime){
+    
+    if(i >0){
+      
+      if(suntime <= i){
+        //console.log(i);
+        suntime = suntime + suntimet;
+      }
+    }
+  }
+  for(var i=0; i <= moontime; i+=moontime){
+    
+    if(i >0){
+      
+      if(moontime <= i){
+        //console.log(i);
+        moontime = moontime + moontimet;
+      }
+    }
   }
   if(suntime <= 4.530){
     //suntime = suntime + suntimet;
@@ -302,8 +365,8 @@ function celestialanimate(){
     moontime = moontime + moontimet;
   }
   if(second() <= 59){
-    suntimet += (.0000001*2);
-    moontimet += (.0000001*2);
+    suntimet += .000000000001;
+    moontimet += .000000000001;
   }
   
   celestialobj.item(0).setangle(moontime);
