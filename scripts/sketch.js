@@ -235,7 +235,7 @@ function screenresizing(){
       scsize =230;
     }else
     if(height <= 999){
-      scsize =200;
+      scsize =10;
     }else
     if(height <= 1024){
       scsize =0;
