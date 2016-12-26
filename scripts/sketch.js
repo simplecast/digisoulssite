@@ -4,7 +4,8 @@
   This is a ineractive 404 page 
 */
 
-
+var Y_AXIS = 1;
+var X_AXIS = 2;
 var canvas;
 var ground;
 var body;
@@ -15,11 +16,14 @@ var suntime;//=0.100;
 var suntimet;//=;
 var moontime;//=0.100;
 var moontimet;//=;
+var testtime;
+var input;
 var whattime = [
   [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23],[1.530,1.730,1.930,2.130,2.530,2.930,3.130,3.330,3.530,4.130,4.330,4.530,4.730,5.130,5.330,5.530,5.730,5.930,6.130,6.330,6.530,6.730,6.930,1.130]]
 /*
   P5 Setup function
 */
+var c1, c2;
 function setup(){
   suntime=1;
   suntimet =0;
@@ -43,6 +47,10 @@ function setup(){
   celestialobj.item(1).setangle(1);
   celestialobj.item(0).setsmcolor('lightblue');
   celestialobj.item(1).setsmcolor('yellow');
+  
+  c1 = color(0);
+  c2 = color(83, 52, 109);
+   background(255);
 }
 /*
   P5 Render function
@@ -54,7 +62,8 @@ function draw(){
   o.style.height = "100%";
   
   /*P5 background function*/
-  background('blue');
+  background(0);
+  setGradient(0, 0, width, height, c1, c2,1);
   /*Method used to check for screen height*/
   screenresizing();
   /*The animation method use to move the sun and moon*/
@@ -76,7 +85,7 @@ function draw(){
   push();
   translate(0,window.innerHeight/2);
   fill("burlywood");
-  rect(0,window.innerHeight-body.clientHeight,1000000,1000000);
+  //rect(0,window.innerHeight-body.clientHeight,1000000,1000000);
   pop();
   
 }
@@ -102,24 +111,21 @@ function celestialanimate(){
   /*
     Runs the animations based on certain ang postions 
   */
+  testtime = 14;
   for(var i=0; i<= hour();i++){
     /*Checks to see if I is with the hour in the muilti array*/
     if(i == whattime[0][i]){
       /*used to set suntime to its current angle stored in an array*/
       for(var j=0; j <= hour(); j++){
         suntime = checkmin(whattime[1][j]);
-        suntime += .0001;
+        //console.log(suntime);
         /*checks if the suntime is behind the next angle in time and 
           incremets the motions ov the sun but the .010 to the angle
         */
-        if(suntime >= checkmin(whattime[1][j+1]) && 
-           checkmin(whattime[1][j+1]) !== undefined){
+        if(suntime >= whattime[1][j+1] && 
+           whattime[1][j+1] !== undefined){
           console.log("adfafd");
-          suntimet += .010;
-          if(suntime === checkmin(whattime[1][j+1]) && 
-           checkmin(whattime[1][j+1]) !== undefined){
-            suntime = checkmin(whattime[1][j]);
-          }
+          suntimet += 0.010;
         }
         /*sets newn to j because j is set to the current hour*/
         newn = j;
@@ -135,15 +141,16 @@ function celestialanimate(){
           }
         }
         if(newn === 12){
-          newn = 12;
+          newn = newn + 12;
           moontime = checkmin(whattime[1][newn]);
         }
         if(newn < 12){
           newn = j + 12;
           moontime = checkmin(whattime[1][newn]);
-        }
+        }else
         if(newn > 12){
           newn = j - 12;
+          //console.log("wwew");
           moontime = checkmin(whattime[1][newn]);
         }
       }
@@ -273,16 +280,44 @@ function screenresizing(){
       console.log("this spot");
     }else
     if(height <= 1366){
+      scsize =280;
+    }else
+    if(height <= 1440){
       scsize =-160;
     }else
     if(height <= 2900){
       scsize =-1800;
     }else
     if(height <= 3490){
-      scsize =-4900;
+      scsize =-3900;
       console.log("err");
     }
    
   }
 }
 
+
+function setGradient(x, y, w, h, c1, c2, axis) {
+
+  noFill();
+  var c;
+  
+  if (axis === 1) {  // Top to bottom gradient
+    for (var i = y; i <= y+h; i++) {
+      var inter = map(i, y, y+h, 0, 1);
+      c = lerpColor(c1, c2,inter);
+      stroke(c);
+      
+      line(x, i, x+w, i);
+    }
+  }  
+  else if (axis == 2) {  // Left to right gradient
+    for (var i = x; i <= x+w; i++) {
+      var inter = map(i, x, x+w, 0, 1);
+      var c = lerpColor(c1, c2, inter);
+      stroke(c);
+      line(i, y, i, y+h);
+    }
+  }
+  return c;
+}
