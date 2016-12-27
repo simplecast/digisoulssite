@@ -48,9 +48,9 @@ function setup(){
   celestialobj.item(0).setsmcolor('lightblue');
   celestialobj.item(1).setsmcolor('yellow');
   
-  c1 = color(0);
-  c2 = color(83, 52, 109);
-   background(255);
+  background(255);
+  //c1 = color(0);
+  //c2 = color(83, 52, 109);
 }
 /*
   P5 Render function
@@ -63,35 +63,45 @@ function draw(){
   
   /*P5 background function*/
   background(0);
+   if(suntime < whattime[1][5] || suntime >= whattime[1][19]){
+    c1 = color(0);
+    c2 = color(83, 52, 109);
+  }else if(suntime >= whattime[1][8] || suntime <= whattime[1][17]){
+    c1 = color(0,198, 255);
+    c2 = color(0,114, 255);
+  }
   setGradient(0, 0, width, height, c1, c2,1);
+  //setGradient(0, 0, width, height, c1, c2,1);
   /*Method used to check for screen height*/
   screenresizing();
   /*The animation method use to move the sun and moon*/
   celestialanimate();
   
-  push();
-  fill(celestialobj.item(1).smcolor);
-  translate(0,0);
-  text("sun"+celestialobj.item(1).ang+"", 10, 30);
-  pop();
-  
-  push();
-  fill(celestialobj.item(0).smcolor);
-  translate(0,10);
-  text("moon"+celestialobj.item(0).ang+"", 10, 30);
-  pop();
+//  push();
+//  fill(celestialobj.item(1).smcolor);
+//  translate(0,0);
+//  text("sun"+celestialobj.item(1).ang+"", 10, 30);
+//  pop();
+//  
+//  push();
+//  fill(celestialobj.item(0).smcolor);
+//  translate(0,10);
+//  text("moon"+celestialobj.item(0).ang+"", 10, 30);
+//  pop();
 
   /*The Ground willl create its own object soon*/
   push();
   translate(0,window.innerHeight/2);
   fill("burlywood");
-  //rect(0,window.innerHeight-body.clientHeight,1000000,1000000);
+  rect(0,window.innerHeight-body.clientHeight,1000000,1000000);
   pop();
   
 }
 /*Checks if the screen is resized and resizes the canvas*/
 window.onresize = function(e){
-  canvas.size(window.innerWidth,window.innerHeight);
+  if(canvas !== undefined){
+    canvas.size(window.innerWidth,window.innerHeight);
+  }
   location.reload();
 }
 /*Funtion that does the sun and moon animation 80 percent of the work 
@@ -118,12 +128,13 @@ function celestialanimate(){
       /*used to set suntime to its current angle stored in an array*/
       for(var j=0; j <= hour(); j++){
         suntime = checkmin(whattime[1][j]);
+        
         //console.log(suntime);
         /*checks if the suntime is behind the next angle in time and 
           incremets the motions ov the sun but the .010 to the angle
         */
-        if(suntime >= whattime[1][j+1] && 
-           whattime[1][j+1] !== undefined){
+        if(suntime == checkmin(whattime[1][j+1]) && 
+           checkmin(whattime[1][j+1]) !== undefined){
           console.log("adfafd");
           suntimet += 0.010;
         }
@@ -134,7 +145,7 @@ function celestialanimate(){
         if(newn === 0){
           newn = 0;
           moontime = checkmin(whattime[1][newn]);
-          if(moontime === checkmin(whattime[1][j+1]) && 
+          if(moontime == checkmin(whattime[1][j+1]) && 
            checkmin(whattime[1][j+1]) !== undefined){
             console.log("adfafd");
             moontime += .010;
@@ -180,12 +191,15 @@ function celestialanimate(){
       }
     }
   }
+  
   /*sets the seconds of suntime and moontime angles*/
   if(second() <= 59){
     suntimet += .000000001;
     moontimet += .000000001;
   }
-  /*RUns the current angles */
+  
+ 
+  /*Runs the current angles */
   celestialobj.item(0).setangle(moontime);
   celestialobj.item(1).setangle(suntime);
 
