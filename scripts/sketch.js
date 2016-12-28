@@ -3,7 +3,7 @@
   Using P5.js
   This is a ineractive 404 page 
 */
-
+var cloud;
 var Y_AXIS = 1;
 var X_AXIS = 2;
 var canvas;
@@ -24,6 +24,7 @@ var whattime = [
   P5 Setup function
 */
 var c1, c2;
+var stara;
 function setup(){
   suntime=1;
   suntimet =0;
@@ -49,21 +50,33 @@ function setup(){
   celestialobj.item(1).setsmcolor('yellow');
   
   background(255);
+
+  
+  cloud = new Particals(244,355);
+  stara= new Star();
+  stara.createstars();
   //c1 = color(0);
   //c2 = color(83, 52, 109);
 }
 /*
   P5 Render function
 */
+
 function draw(){
  
   var o = document.querySelector('#defaultCanvas0');
   o.style.width = "100%";
   o.style.height = "100%";
+  //stars.push(new Star());
   
+//  for(var i =0 ; i <= stars.length; i++){
+//    stars[i].update();
+//    stars[i].draw();
+//  }
   /*P5 background function*/
+  
   background(0);
-   if(suntime < whattime[1][5] || suntime >= whattime[1][19]){
+   if(suntime < whattime[1][5] || suntime >= whattime[1][18]){
     c1 = color(0);
     c2 = color(83, 52, 109);
   }else if(suntime >= whattime[1][8] || suntime <= whattime[1][17]){
@@ -75,7 +88,14 @@ function draw(){
   /*Method used to check for screen height*/
   screenresizing();
   /*The animation method use to move the sun and moon*/
+  stara.updated();
+  stara.draw();
+  
   celestialanimate();
+  cloud.update();
+  cloud.draw();
+  
+  
   
 //  push();
 //  fill(celestialobj.item(1).smcolor);
