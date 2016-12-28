@@ -1,7 +1,7 @@
 function Star(){
   this.r = random(height);
   if( this.r < (height/2))
-  { console.log(this.r);
+  { //console.log(this.r);
     this.star = new Particals(random(width),this.r);
   }
   this.stars = new Array();
@@ -18,7 +18,7 @@ function Star(){
     for(var i=0 ;i<= 400; i++){
       
         this.stars.push(new Star());
-        console.log(i);
+        //console.log(i);
       
     }
   }

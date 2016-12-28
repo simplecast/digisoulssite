@@ -88,12 +88,15 @@ function draw(){
   /*Method used to check for screen height*/
   screenresizing();
   /*The animation method use to move the sun and moon*/
-  stara.updated();
-  stara.draw();
+  if(suntime < whattime[1][5] || suntime >= whattime[1][18]){
+    stara.updated();
+    stara.draw();
+  }
+  
   
   celestialanimate();
-  cloud.update();
-  cloud.draw();
+//  cloud.update();
+//  cloud.draw();
   
   
   
@@ -141,7 +144,7 @@ function celestialanimate(){
   /*
     Runs the animations based on certain ang postions 
   */
-  testtime = 14;
+  testtime = 9;
   for(var i=0; i<= hour();i++){
     /*Checks to see if I is with the hour in the muilti array*/
     if(i == whattime[0][i]){
