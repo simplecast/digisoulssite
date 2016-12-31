@@ -25,6 +25,7 @@ var whattime = [
 */
 var c1, c2;
 var stara;
+var cloudss = new Array();
 function setup(){
   suntime=1;
   suntimet =0;
@@ -36,6 +37,15 @@ function setup(){
     
   */
   celestialobj = new SpaceObjects(10,0);
+  cloud = new Clouds(random(width),random(height));
+ // for(var i=0; i< 10; i++)
+    //cloudss.push(new Clouds());
+  
+//  for(var i=0; i <cloudss.length; i++){
+//    cloudss[i].createClouds(random(width),random(height));
+//  }
+  
+  
   
   /*Creates Canavs used as background*/
   canvas = createCanvas(body.clientWidth,body.clientHeight);
@@ -52,7 +62,7 @@ function setup(){
   background(255);
 
   
-  cloud = new Particals(244,355);
+  //cloud = new Particals(244,355);
   stara= new Star();
   stara.createstars();
   //c1 = color(0);
@@ -61,12 +71,19 @@ function setup(){
 /*
   P5 Render function
 */
-
+var xo = 0;
 function draw(){
- 
+ //for(var i=0; i <cloudss.length; i++){
+   // cloudss[i].createClouds();
+  //}
+  cloud.createClouds();
   var o = document.querySelector('#defaultCanvas0');
   o.style.width = "100%";
   o.style.height = "100%";
+  //cloud.update();
+  //for(var i=0; i < cloudss.length; i++){
+   // cloudss[i].update();
+  //}
   //stars.push(new Star());
   
 //  for(var i =0 ; i <= stars.length; i++){
@@ -95,9 +112,39 @@ function draw(){
   
   
   celestialanimate();
-//  cloud.update();
-//  cloud.draw();
+  noFill();
+/*beginShape();
+//curveVertex(84,  91);
+fill(255);
+//arc(50, 50, 80, 80, 236, QUARTER_PI, OPEN);
+//arc(60, 50, 80, 80, 236, QUARTER_PI, OPEN);
+//arc(70, 50, 80, 80, 236, PI+QUARTER_PI, OPEN);
+//arc(53, 50, 80, 80, 236, QUARTER_PI, OPEN);
+  push();
+  translate(xo,100);
+  noStroke();
+  for (var x = 0; x < 100; x+=10) {
+		for (var y = 0; y < 20; y+=10) {
+			var c = 255 * noise(0.001 * x, 0.001 * y);
+			fill(c);
+			arc(x, y, 80, 80, 236, 3.412333, CHORD);
+            //console.log((PI++)*.001);
+		}		
+  	}
+  pop();
+endShape();*/
   
+  xo++;
+  cloud.update();
+  //cloud.draw();
+  cloud.drawclouds();
+//  for(var i=0; i < cloudss.length; i++){
+//    push()
+//    //cloudss[i].draw();
+//    cloudss[i].drawclouds();
+//    pop();
+//  }
+//  
   
   
 //  push();

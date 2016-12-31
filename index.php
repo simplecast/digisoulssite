@@ -12,6 +12,7 @@
     <script src="scripts/spaceobjects.js"></script>
     <script src="scripts/particales.js"></script>
     <script src="scripts/stars.js"></script>
+    <script src="scripts/clouds.js"></script>
     <script src="scripts/sketch.js"></script>
     <link rel="stylesheet" type="text/css" href="css/maincss.css">
     <link rel="shortcut icon" href="">
