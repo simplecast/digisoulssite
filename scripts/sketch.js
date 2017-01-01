@@ -168,13 +168,13 @@ endShape();*/
   
   push();
   fill('brown');
-  rect(((width/2)-9)-300,(height/2)+200,40,400);
-  rect(((width/2)+200)-300,(height/2)+200,40,400);
+  rect(((width/2)-9)-300,(height/2)+20,40,400);
+  rect(((width/2)+200)-300,(height/2)+20,40,400);
   fill('brown');
-  rect(((width/2)-140)-300,(height/2)+200,600,200);
+  rect(((width/2)-140)-300,(height/2)+20,600,200);
   fill('black');
   textSize(60);
-  text("Under Construction!!",((width/2)-110)-300,(height/2)+300);
+  text("Under Construction!!",((width/2)-110)-300,((height/2)+300)-150);
   pop();
   
 }
