@@ -59,7 +59,7 @@ function setup(){
   celestialobj.item(0).setsmcolor('lightblue');
   celestialobj.item(1).setsmcolor('yellow');
   
-  background(255);
+  background(0);
 
   
   //cloud = new Particals(244,355);
@@ -169,10 +169,13 @@ endShape();*/
 }
 /*Checks if the screen is resized and resizes the canvas*/
 window.onresize = function(e){
-  if(canvas !== undefined){
+  canvas.size(window.innerWidth,window.innerHeight);
+  if(canvas != undefined){
     canvas.size(window.innerWidth,window.innerHeight);
   }
+  console.log("ok");
   location.reload();
+  location.replace("./index.php");
 }
 /*Funtion that does the sun and moon animation 80 percent of the work 
   is done here */

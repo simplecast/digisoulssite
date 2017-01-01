@@ -1,11 +1,16 @@
 function Clouds(x,y,o){
   this.x=x||random(width);
   this.y = y;
+  this.rx = random(width);
   this.ry = random(height);
   
   
-  if(this.ry < (height/2)){
+  if(this.ry <= (height/2)){
     this.y=random(this.ry);
+    if(this.ry <= (height/2)){
+      console.log("hasda");
+      ///scale(this.x/30,this.ry/30);
+    }
   }
   
   this.o = o;
@@ -14,7 +19,7 @@ function Clouds(x,y,o){
   
   this.update = function(){
     
-    this.x+= 0.1;
+    this.x+= 1;
     //this.y = this.y;
 
   }
@@ -46,9 +51,12 @@ function Clouds(x,y,o){
 
     
     translate(this.x,this.y);
+    if(this.rx >200)
+    scale(this.rx/300,this.ry/300);
     if(this.x >= width){
       this.x=0;
       this.ry = random(height);
+      scale(random(width)/300,random(height)/300);
       if(this.ry < (height/2))
         this.y = random(this.ry);
     }
