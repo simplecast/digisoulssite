@@ -166,6 +166,17 @@ endShape();*/
   rect(0,window.innerHeight-body.clientHeight,1000000,1000000);
   pop();
   
+  push();
+  fill('brown');
+  rect(((width/2)-9)-300,(height/2)+200,40,400);
+  rect(((width/2)+200)-300,(height/2)+200,40,400);
+  fill('brown');
+  rect(((width/2)-140)-300,(height/2)+200,600,200);
+  fill('black');
+  textSize(60);
+  text("Under Construction!!",((width/2)-110)-300,(height/2)+300);
+  pop();
+  
 }
 /*Checks if the screen is resized and resizes the canvas*/
 window.onresize = function(e){

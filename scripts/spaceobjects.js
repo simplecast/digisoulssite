@@ -28,7 +28,7 @@ var SpaceObjects = function(r,d,o){
   this.createSpaceBody = function(size,r){
     this.object = new Array(size);
     this.orbitspeed = this.smspeed;
-    console.log("objects length"+ this.object.length);
+    //console.log("objects length"+ this.object.length);
     for(var i=0; i <=this.object.length; i++){
       /*Arraylist Does not exist in javascript had to push then break 
         and set a new that i pushed to to the first one to set the sun and moon*/

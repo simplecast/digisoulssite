@@ -8,7 +8,7 @@ function Clouds(x,y,o){
   if(this.ry <= (height/2)){
     this.y=random(this.ry);
     if(this.ry <= (height/2)){
-      console.log("hasda");
+      //console.log("hasda");
       ///scale(this.x/30,this.ry/30);
     }
   }
@@ -39,8 +39,8 @@ function Clouds(x,y,o){
         this.clouds[i].update();
         this.clouds[i].draw();
       }
-      if(this.clouds[i].x == 0)
-        console.log(this.clouds[i].x);
+      /*if(this.clouds[i].x == 0)
+        console.log(this.clouds[i].x);*/
     }
   }
   this.draw= function(){
