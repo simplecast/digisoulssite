@@ -19,6 +19,6 @@
     <link rel="shortcut icon" href="">
   </head>
   <body>
-    <div id="underconstructdiv"><span>Under Construction</span><span>Word Of The Day mkbjkkgjghjkghghjgghjg</span></div>
+    <div id="underconstructdiv"><span>Under Construction</span><span>Word Of The Day</span></div>
   </body>
 </html>
