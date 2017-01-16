@@ -76,7 +76,7 @@ function draw(){
  //for(var i=0; i <cloudss.length; i++){
    // cloudss[i].createClouds();
   //}
-  //cloud.createClouds();
+  cloud.createClouds();
   var o = document.querySelector('#defaultCanvas0');
   o.style.width = "100%";
   o.style.height = "100%";
@@ -104,38 +104,24 @@ function draw(){
   //setGradient(0, 0, width, height, c1, c2,1);
   /*Method used to check for screen height*/
   screenresizing();
-  /*The animation method use to move the sun and moon*/
+  /*Check if its night time*/
   if(suntime < whattime[1][5] || suntime >= whattime[1][18]){
     stara.updated();
     stara.draw();
+  }else{
+    cloud.update();
+    cloud.amount(4);
+    cloud.drawclouds();
   }
   
-  
+  /*The animation method use to move the sun and moon*/
   celestialanimate();
   noFill();
-/*beginShape();
-//curveVertex(84,  91);
-fill(255);
-//arc(50, 50, 80, 80, 236, QUARTER_PI, OPEN);
-//arc(60, 50, 80, 80, 236, QUARTER_PI, OPEN);
-//arc(70, 50, 80, 80, 236, PI+QUARTER_PI, OPEN);
-//arc(53, 50, 80, 80, 236, QUARTER_PI, OPEN);
-  push();
-  translate(xo,100);
-  noStroke();
-  for (var x = 0; x < 100; x+=10) {
-		for (var y = 0; y < 20; y+=10) {
-			var c = 255 * noise(0.001 * x, 0.001 * y);
-			fill(c);
-			arc(x, y, 80, 80, 236, 3.412333, CHORD);
-            //console.log((PI++)*.001);
-		}		
-  	}
-  pop();
-endShape();*/
+
   
   xo++;
   /*cloud.update();
+  cloud.amount(3);
   //cloud.draw();
   cloud.drawclouds();*/
 //  for(var i=0; i < cloudss.length; i++){

@@ -38,9 +38,9 @@
         </li>
       </ul>
     </nav>
-    <main>
-      <div id="closed"></di>
-      <div id="open"></div>
+    <div id="wrapper">
+      <div class="closed">closed</di>
+      <div id="open">opened</div>
       <!--<div>
         <img src="./assets/kishon_image.png" alt="Picture of Kishon" height="369" width="416">
         <p>About Me</p>
@@ -48,7 +48,7 @@
         I will be attending Broward College for my Bachelor’s degree for Information Technology, and this is my portfolio.</p>
       </div>
       <a>Click here to read more about me</a>-->
-    </main>
+    </div>
     <script src="./scripts/mainscript.js"></script>
   </body>
 </html>
