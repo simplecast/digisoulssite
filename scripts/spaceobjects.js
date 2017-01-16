@@ -68,7 +68,8 @@ var SpaceObjects = function(r,d,o){
   
   this.display = function(){
     push();
-    fill(this.smcolor);
+    //fill(this.smcolor);
+    noStroke();
     rotate(this.ang); 
     translate(this.distence, 0);
     this.ellipsed = ellipse(0, 0, this.radis*2, this.radis*2);

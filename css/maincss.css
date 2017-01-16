@@ -23,3 +23,15 @@ body{
   top: 0;
   bottom: 0;
 }
+#underconstructdiv{
+  position: fixed;
+  padding: 100px;
+  width: 100px;
+  height: 100px;
+  background: blue;
+  margin: auto auto auto auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}

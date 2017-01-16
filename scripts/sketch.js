@@ -56,8 +56,8 @@ function setup(){
   celestialobj.item(1).id="sun";
   celestialobj.item(0).setangle(1);
   celestialobj.item(1).setangle(1);
-  celestialobj.item(0).setsmcolor('lightblue');
-  celestialobj.item(1).setsmcolor('yellow');
+  //celestialobj.item(0).setsmcolor('white');
+  //celestialobj.item(1).setsmcolor('yellow');
   
   background(0);
 
@@ -76,7 +76,7 @@ function draw(){
  //for(var i=0; i <cloudss.length; i++){
    // cloudss[i].createClouds();
   //}
-  cloud.createClouds();
+  //cloud.createClouds();
   var o = document.querySelector('#defaultCanvas0');
   o.style.width = "100%";
   o.style.height = "100%";
@@ -135,9 +135,9 @@ fill(255);
 endShape();*/
   
   xo++;
-  cloud.update();
+  /*cloud.update();
   //cloud.draw();
-  cloud.drawclouds();
+  cloud.drawclouds();*/
 //  for(var i=0; i < cloudss.length; i++){
 //    push()
 //    //cloudss[i].draw();
@@ -160,7 +160,7 @@ endShape();*/
 //  pop();
 
   /*The Ground willl create its own object soon*/
-  push();
+  /*push();
   translate(0,window.innerHeight/2);
   fill("burlywood");
   rect(0,window.innerHeight-body.clientHeight,1000000,1000000);
@@ -175,7 +175,7 @@ endShape();*/
   fill('black');
   textSize(60);
   text("Under Construction!!",((width/2)-110)-300,(height/2)+300);
-  pop();
+  pop();*/
   
 }
 /*Checks if the screen is resized and resizes the canvas*/

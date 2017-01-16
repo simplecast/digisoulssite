@@ -1,9 +1,10 @@
 function Star(){
   this.r = random(height);
-  if( this.r < (height/2))
+  /*if( this.r < (height/2))
   { //console.log(this.r);
-    this.star = new Particals(random(width),this.r);
-  }
+    //this.star = new Particals(random(width),this.r);
+  }*/
+  this.star = new Particals(random(width),this.r);
   this.stars = new Array();
   
   this.updated = function(){
