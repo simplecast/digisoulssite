@@ -1,0 +1,57 @@
+html {
+  height: 100%;
+  margin: 0;
+}
+body {
+  height: 100%;
+  background: linear-gradient(gray,white);
+  margin: 0;
+}
+header{
+  height: 30px;
+  width: 99.9%;
+/*  border: 1px solid black;*/
+}
+nav ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  border: 1px solid black;
+}
+ul li{
+  float: left;
+  border: 1px solid pink;
+}
+
+ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul li a:hover:not(.active) {background-color: #111;}
+
+ul li a.active {background-color: #4CAF50;}
+
+div#closed{
+  border: 1px solid red;
+}
+div#open{
+  width: 30px;
+  border: 1px solid blue;
+  padding: 10;
+}
+main{
+  display: inline-flex;
+  border: 1px solid green;
+  padding: 10;
+}
+
+
+
+@media screen and (max-width: 600px){
+    ul li, 
+    ul.topnav li {float: none;}
+}
