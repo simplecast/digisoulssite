@@ -177,10 +177,7 @@ endShape();*/
 <<<<<<< HEAD
   text("Under Construction!!",((width/2)-110)-300,(height/2)+300);
   pop();*/
-=======
-  text("Under Construction!!",((width/2)-110)-300,((height/2)+300)-150);
-  pop();
->>>>>>> 30c0b5f5c0bdb459233ce8aef28ce846d88876e3
+
   
 }
 /*Checks if the screen is resized and resizes the canvas*/

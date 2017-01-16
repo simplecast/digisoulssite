@@ -7,7 +7,7 @@ body{
   height: 100%;
   width: 100%;
   margin: 0;
-  background: blue;
+  background: gray;
   overflow: hidden;
 }
 
@@ -23,13 +23,37 @@ body{
   top: 0;
   bottom: 0;
 }
+span{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto  auto auto;
+}
+span:nth-child(2){
+  position: absolute;
+  top: 10vmin;
+  overflow: auto;
+  font-size: 6vmin;
+  
+}
+
 #underconstructdiv{
   position: fixed;
-  padding: 100px;
+  overflow: hidden;
+  padding: 35vmin;
   width: 100px;
   height: 100px;
-  background: blue;
+  border-radius: 25px;
+  background: lightgray;
+  opacity: 0.8;
+  box-shadow: 5px 3px 10px 10px black;
   margin: auto auto auto auto;
+  font-family: 'Niconne', cursive;
+  text-align: center;
+  font-size: 8vmin;
+  color: darkred;
   left: 0;
   right: 0;
   top: 0;

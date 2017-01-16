@@ -14,10 +14,11 @@
     <script src="scripts/stars.js"></script>
     <script src="scripts/clouds.js"></script>
     <script src="scripts/sketch.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Niconne" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/maincss.css">
     <link rel="shortcut icon" href="">
   </head>
   <body>
-    <div id="underconstructdiv"></div>
+    <div id="underconstructdiv"><span>Under Construction</span><span>Word Of The Day mkbjkkgjghjkghghjgghjg</span></div>
   </body>
 </html>
